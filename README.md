@@ -18,3 +18,6 @@ Or install it yourself as:
 
 ## Usage
 
+Run the all tests from directory "spec"
+
+   rake rspec_gem:rspec[spec/.]
