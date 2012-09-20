@@ -1,3 +1,3 @@
-module RspecGem
-  VERSION = "0.0.1"
+class RspecGem
+  VERSION = "0.0.2"
 end

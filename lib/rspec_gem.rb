@@ -1,31 +1,26 @@
 # encoding: utf-8
-require "rspec_gem/version"
+require_relative "rspec_gem/version"
 
-module RspecGem
+class RspecGem
+
+  def initialize(path, name)
+    @@path = path
+    @@name_of_gem = name
+    load File.expand_path("../tasks/rspec_gem.rake", __FILE__) if defined?(Rake)
+  end
 
   class << self
-
-    def config(path, name)
-      @path = path
-      @name_of_gem = name
+    def name_of_gem
+      @@name_of_gem
     end
 
     def path
-      File.expand_path("../../", @path)
+      @@path
     end
 
-    def name_of_gem
-      @name_of_gem
+    def path_rails_environment
+      File.expand_path("config/environment", ENV["PWD"])
     end
-
-    def require_rails_environment
-      require File.expand_path("../config/environment", Rails.root) if defined?(Rails)
-    end
-
   end
-
-  config(__FILE__, "rspec_gem")
-
-  load File.expand_path("../tasks/rspec_gem.rake", __FILE__) if defined?(Rake)
 
 end

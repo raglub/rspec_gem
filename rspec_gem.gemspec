@@ -18,7 +18,7 @@ Gem::Specification.new do |gem|
   gem.test_files    = gem.files.grep(%r{^(spec)/})
   gem.require_paths = ["lib"]
 
-  gem.add_development_dependency "rspec"
+  gem.add_dependency "rspec"
   gem.add_dependency "logger", ">= 1.2.8"
   gem.add_dependency "rake"
 end
