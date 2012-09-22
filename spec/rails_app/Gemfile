@@ -21,5 +21,6 @@ group :assets do
 end
 
 gem 'jquery-rails'
-
 gem 'rspec_gem_spec', :path => File.expand_path("../../rspec_gem_spec", __FILE__)
+gem 'rspec'
+gem "rspec-rails"
