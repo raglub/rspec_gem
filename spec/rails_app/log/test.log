@@ -1,0 +1,12 @@
+  [1m[36m (0.8ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (13.1ms)[0m  [1mINSERT INTO "rspec_gem_models" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Sat, 22 Sep 2012 09:17:48 UTC +00:00], ["name", "example"], ["updated_at", Sat, 22 Sep 2012 09:17:48 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "rspec_gem_models" [0m
+  [1m[35m (0.3ms)[0m  rollback transaction
+  [1m[36m (0.8ms)[0m  [1mbegin transaction[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (57.5ms)[0m  [1mINSERT INTO "rspec_gem_models" ("created_at", "name", "updated_at") VALUES (?, ?, ?)[0m  [["created_at", Sat, 22 Sep 2012 09:46:02 UTC +00:00], ["name", "example"], ["updated_at", Sat, 22 Sep 2012 09:46:02 UTC +00:00]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(*) FROM "rspec_gem_models" [0m
+  [1m[35m (0.4ms)[0m  rollback transaction
