@@ -1,0 +1,8 @@
+#!/usr/bin/env ruby
+
+rails_root = ENV["PWD"]
+require ARGV[0]
+gem_root = Gem::Specification.find_by_name(ARGV[0]).gem_dir
+command = "rspec #{File.expand_path(ARGV[1], gem_root)}"
+p command
+system(command)
