@@ -22,14 +22,18 @@ For example, you have rails application of name "rails_app" and gem of name "tes
 
 ### 0.2.x
 
-You can use path into rails environment by use method (Usage resource of application, like models)
+You can require rails rails environment by use method (include resource of application, like models)
 
-    RspecGem.path_rails_environment
+    RspecGem.require_rails_environment
 
-which you can use in file spec_helper.rb, for example:
+or more faster environment
+
+    RspecGem.require_model_environment
+
+which you add into file spec_helper.rb which is included in your gem, for example:
 
     require "rspec_gem"
-    require RspecGem.path_rails_environment
+    RspecGem.require_rails_environment
 
 Finally in your application rails_app invoke command (all tests from directory "spec" from gem testing_gem)
 
@@ -37,9 +41,9 @@ Finally in your application rails_app invoke command (all tests from directory "
 
 with color
 
-    $ rspec_gem testing_gem "spec --color"
+    $ bundle exec rspec_gem testing_gem "spec --color"
 
-more precision
+more precisely
 
     $ rspec_gem testing_gem spec/testing_gem_spec.rb
 
@@ -64,6 +68,6 @@ with color
 
     $ RAILS_ENV=test rake testing_gem:rspec "spec --color"
 
-more precision
+more precisely
 
     $ RAILS_ENV=test rake testing_gem:rspec spec/testing_gem_spec.rb
