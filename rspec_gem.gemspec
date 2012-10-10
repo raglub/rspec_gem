@@ -7,7 +7,7 @@ Gem::Specification.new do |gem|
   gem.name          = "rspec_gem"
   gem.version       = RspecGem::VERSION
   gem.platform      = Gem::Platform::RUBY
-  gem.date          = "2012-10-05"
+  gem.date          = "2012-10-10"
   gem.authors       = ["michal szyma"]
   gem.email         = ["raglub.ruby@gmail.com"]
   gem.description   = %q{Invoke the tests rspec from gems in application rails.}
@@ -23,4 +23,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "rake"
   gem.add_dependency "logger", ">= 1.2.8"
   gem.add_dependency "database_cleaner"
+  gem.add_dependency "spork", ">= 0.9.2"
 end
