@@ -20,8 +20,6 @@ Or install it yourself as:
 
 For example, you have rails application of name "rails_app" and gem of name "example_gem" with the files for testing.
 
-### 0.2.x
-
 You can require rails rails environment by use method (include resource of application, like models)
 
     RspecGem.require_rails_environment
@@ -51,31 +49,6 @@ show all tracks to testing files
 
     $ rspec_gem example_gem -t
 
-run the spork
+testing using spork
 
-    $ rspec_gem example_gem spork
-
-### 0.1.x
-
-Then you should include
-
-    require "rspec_gem"
-    RspecGem.new(File.expand_path("../..", __FILE__), "example_gem")
-
-into file ../example_gem/lib/example_gem.rb in your gem.
-
-You can use path into rails environment by use method (Usage resource of application, like models)
-
-    RspecGem.path_rails_environment
-
-Finally in your application rails_app invoke command (all tests from directory "spec" from gem example_gem)
-
-    $ RAILS_ENV=test rake example_gem:rspec spec
-
-with color
-
-    $ RAILS_ENV=test rake example_gem:rspec "spec --color"
-
-more precisely
-
-    $ RAILS_ENV=test rake example_gem:rspec spec/example_gem_spec.rb
+    $ rspec_gem example_gem spec/models/. --drb

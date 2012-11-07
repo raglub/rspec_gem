@@ -2,23 +2,15 @@
 
 require "logger"
 
-rails_root = ENV["PWD"]
 name_of_gem = ARGV[0]
 gem_root = Gem::Specification.find_by_name(ARGV[0]).gem_dir
+logger = Logger.new(STDOUT)
 
-case ARGV[1].to_s
-when "spork"
-  all_arg = ARGV.join(" ")
-  command = "cd #{gem_root} && #{all_arg}"
-  puts command
-  system(command)
+if ARGV[1] == "-t"
+  logger.info Dir["#{gem_root}/**/*_spec.rb"]
 else
-  if ARGV[1] == "-t"
-    puts Dir["#{gem_root}/**/*_spec.rb"]
-  else
-    rest_arg = ARGV[1...ARGV.length].join(" ")
-    command = "rspec #{File.join(gem_root, rest_arg)}"
-    puts command
-    system(command)
-  end
+  rest_arg = ARGV[1...ARGV.length].join(" ")
+  command = "rspec #{File.join(gem_root, rest_arg)}"
+  logger.info command
+  system(command)
 end

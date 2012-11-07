@@ -1,34 +1,21 @@
 # encoding: utf-8
+
 require_relative "rspec_gem/version"
 
 class RspecGem
 
-  # create task for your gem
-  # path - path into directory of your gem
-  # name_of_gem - name of your gem
-  def initialize(path, name_of_gem)
-    @@path = path
-    @@name_of_gem = name_of_gem
-    load File.expand_path("../tasks/rspec_gem.rake", __FILE__) if defined?(Rake)
-  end
-
   class << self
-    def name_of_gem
-      @@name_of_gem
-    end
-
-    def path
-      @@path
+    def app_path
+      ENV["PWD"]
     end
 
     def path_rails_environment
-      return File.expand_path("config/environment", Rails.root) if defined?(Rails)
-      File.expand_path("config/environment", ENV["PWD"])
+      File.expand_path("config/environment", app_path)
     end
 
     # require full rails environment
     def require_rails_environment
-      require File.expand_path("config/environment", ENV["PWD"])
+      require path_rails_environment
     end
 
     # require simply environment without active records
@@ -37,7 +24,7 @@ class RspecGem
       require "active_support/dependencies"
       %w{ extensions helpers mailers models presenters }.each do |dir|
         ActiveSupport::Dependencies.autoload_paths <<
-          File.expand_path("app/#{dir}", ENV["PWD"])
+          File.expand_path("app/#{dir}", app_path)
       end
     end
 
@@ -50,7 +37,7 @@ class RspecGem
       require "yaml"
       require "active_record"
       ActiveRecord::Base.establish_connection(
-        YAML.load(File.read(ENV["PWD"] + "/config/database.yml"))["test"]
+        YAML.load(File.read(app_path + "/config/database.yml"))["test"]
       )
 
       # DatabaseCleaner
@@ -69,7 +56,7 @@ class RspecGem
       end
 
       # configurations into database
-      ActiveRecord::Base.send(:configurations=, YAML::load(ERB.new(IO.read(ENV["PWD"] + "/config/database.yml")).result))
+      ActiveRecord::Base.send(:configurations=, YAML::load(ERB.new(IO.read(app_path + "/config/database.yml")).result))
     end
 
   end
